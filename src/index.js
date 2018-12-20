@@ -1,12 +1,37 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import 'normalize.css/normalize.css'
+import {BrowserRouter, Route, Switch} from 'react-router-dom'
+import './styles/styles.scss';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import Dashboard from './components/dashboard';
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: http://bit.ly/CRA-PWA
-serviceWorker.unregister();
+const AddExpensePage = () => (
+    <h1>Add Expense Page</h1>
+)
+
+const EditExpensePage = () => (
+  <h1>Edit Expense Page</h1>
+)
+
+const HelpPage = () => (
+  <h1>Help Page</h1>
+)
+
+const NotFound = () => (
+  <h1>404</h1>
+)
+
+const routes = (
+  <BrowserRouter>
+    <Switch>
+      <Route path="/" component={Dashboard} exact={true} />
+      <Route path="/create" component={AddExpensePage} />
+      <Route path="/edit" component={EditExpensePage} />
+      <Route path="/help" component={HelpPage}/>
+      <Route component={NotFound}  />
+    </Switch>
+  </BrowserRouter>
+);
+
+ReactDOM.render(routes, document.getElementById('root'));
