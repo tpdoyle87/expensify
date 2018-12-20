@@ -14,3 +14,9 @@ button {
 button:disabled {
   cursor: default;
 }
+
+.active {
+  text-decoration: none;
+  font-weight: bold;
+  color: black;
+}
