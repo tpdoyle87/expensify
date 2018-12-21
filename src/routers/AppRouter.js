@@ -13,12 +13,12 @@ const AppRouter = () => (
     <div>
     <Header />
       <Switch>
-        <Route exact path="/" component={Dashboard} />
-        <Route path="/create" component={AddExpensePage} />
-        <Route path="/edit/:id" component={EditExpensePage} />
-        <Route path="/help" component={HelpPage}/>
-        <Route component={NotFound}  />
-      </Switch>
+      <Route exact path="/" component={Dashboard} />
+      <Route path="/create" component={AddExpensePage} />
+      <Route path="/edit/:id" component={EditExpensePage} />
+      <Route path="/help" component={HelpPage}/>
+      <Route component={NotFound}  />
+    </Switch>
     </div>
   </BrowserRouter>
 );
