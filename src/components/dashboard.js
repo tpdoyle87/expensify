@@ -1,10 +1,11 @@
 import React from 'react'
+import ConnectedExpenseList from './ExpenseList'
 
 export default class Dashboard extends React.Component {
   render() {
     return(
       <div>
-        <h1>Hello World!</h1>
+        <ConnectedExpenseList />
       </div>
     );
   }
