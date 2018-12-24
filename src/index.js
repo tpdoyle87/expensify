@@ -17,7 +17,6 @@ const store = configureStore();
 store.dispatch(addExpense({description: "water", amount: 400, createdAt: 344000}))
 store.dispatch(addExpense({description: "rent", amount: 4000, createdAt: 344200}))
 store.dispatch(addExpense({description: "gas", amount: 109500, createdAt: 299000}))
-store.dispatch(setTextFilter("rent"))
 // allows all components to have access to the redux store
 const jsx = (
   <Provider store={store}>
