@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "jest": "^23.6.0",
     "moment": "^2.23.0",
     "node-sass": "^4.11.0",
     "normalize.css": "^8.0.1",
