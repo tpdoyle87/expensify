@@ -42,6 +42,11 @@ test('it should remove an expense', () => {
   expect(state).toEqual([expenses[0], expenses[2]])
 })
 
+test('it should not remove data if there is no match', () => {
+  const state = expensesReducer(expenses, {type: 'REMOVE_EXPENSE', id: 4})
+  expect(state).toEqual(expenses)
+})
+
 test('it should edit an expense', () => {
   const updates = {
     description: 'agua'
