@@ -1,4 +1,4 @@
-export default = [{
+export default [{
   id: 1,
   description: "water",
   amount: 3000,
@@ -17,3 +17,6 @@ export default = [{
   note: 'hi',
   createdAt: 3
 }]
+
+// allow you to create data to be used in test files by simply importing
+// the data into the file. NICE!!
