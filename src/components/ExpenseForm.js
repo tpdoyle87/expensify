@@ -1,8 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 import { SingleDatePicker } from 'react-dates';
-import 'react-dates/initialize';
-import 'react-dates/lib/css/_datepicker.css';
+import uuid from 'uuid'
 
 const date = moment();
 console.log(date.format("MMM Do, YYYY"))
@@ -54,7 +53,6 @@ export default class ExpenseForm extends React.Component {
       this.setState(() => ({
         error: undefined
       }))
-      console.log("submitted")
       this.props.onSubmit({
         description: this.state.description,
         amount: parseFloat(this.state.amount, 10) * 100,
@@ -88,7 +86,7 @@ export default class ExpenseForm extends React.Component {
             onDateChange={this.onDateChange}
             focused={this.state.calanderFocused}
             onFocusChange={this.onFocusChange}
-            id={Math.random().toString()}
+            id={uuid()}
             numberOfMonths={1}
             isOutsideRange={() => false}
             hideKeyboardShortcutsPanel={true}
