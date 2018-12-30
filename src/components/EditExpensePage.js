@@ -6,26 +6,30 @@ import { editExpense } from '../actions/expenses'
 import { removeExpense } from '../actions/expenses'
 import { dispatch } from 'rxjs/internal/observable/pairs';
 
+class EditExpensePage extends React.Component {
+  onEdit = (expense) => {
+    this.props.dispatch(editExpense(this.props.expense.id, expense))
+    this.props.history.push("/")
+  }
 
-const EditExpensePage = (props) => {
-  return (
-    <div>
-      <ExpenseForm
-        expense={props.expense}
-        onSubmit={(expense) => {
-          props.dispatch(editExpense(props.expense.id, expense))
-          props.history.push("/")
-        }}
-      />
-      <button onClick={() => {
-        props.dispatch(removeExpense({ id: props.expense.id }))
-        props.history.push('/')
-      }}
-      >
-        Remove
+  onRemove = () => {
+    this.props.dispatch(removeExpense({ id: this.props.expense.id }))
+    this.props.history.push('/')
+  }
+  render() {
+    return (
+      <div>
+        <ExpenseForm
+          expense={this.props.expense}
+          onSubmit={this.onEdit}
+        />
+        <button onClick={this.onRemove}
+        >
+          Remove
       </button>
-    </div>
-  )
+      </div>
+    )
+  }
 }
 
 const mapStateToProps = (state, props) => {
