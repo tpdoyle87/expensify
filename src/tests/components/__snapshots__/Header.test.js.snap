@@ -4,18 +4,19 @@ exports[`should render header correctly 1`] = `
 <header>
   <div>
     <div>
+      <h1>
+        Expensify
+      </h1>
+    </div>
+    <div>
       <NavLink
         activeClassName="active"
         aria-current="page"
         exact={true}
         to="/"
       >
-        <h1>
-          Expensify
-        </h1>
+        Dashboard
       </NavLink>
-    </div>
-    <div>
       <NavLink
         activeClassName="active"
         aria-current="page"

@@ -6,11 +6,11 @@ const Header = () => (
   <header>
     <div>
       <div>
-        <NavLink exact to="/" activeClassName="active"><h1>Expensify</h1></NavLink>
+        <h1>Expensify</h1>
       </div>
       <div>
+        <NavLink exact to="/" activeClassName="active">Dashboard</NavLink>
         <NavLink to="/create" activeClassName="active">Add Expense</NavLink>
-
       </div>
     </div>
   </header>
