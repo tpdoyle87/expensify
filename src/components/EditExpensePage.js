@@ -2,18 +2,17 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import ExpenseForm from './ExpenseForm'
-import { editExpense } from '../actions/expenses'
-import { removeExpense } from '../actions/expenses'
-import { dispatch } from 'rxjs/internal/observable/pairs';
+import { startEditExpense } from '../actions/expenses'
+import { startRemoveExpense } from '../actions/expenses'
 
 class EditExpensePage extends React.Component {
   onEdit = (expense) => {
-    this.props.dispatch(editExpense(this.props.expense.id, expense))
+    this.props.dispatch(startEditExpense(this.props.expense.id, expense))
     this.props.history.push("/")
   }
 
   onRemove = () => {
-    this.props.dispatch(removeExpense({ id: this.props.expense.id }))
+    this.props.dispatch(startRemoveExpense({ id: this.props.expense.id }))
     this.props.history.push('/')
   }
   render() {
