@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 
 import ExpenseListItem from './ExpenseListItem'
 import selectExpenses from '../selectors/expenses'
-import { setExpenses } from '../actions/expenses'
 
 class ExpenseList extends React.Component {
 
