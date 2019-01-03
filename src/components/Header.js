@@ -8,7 +8,7 @@ const Header = ({ startLogout }) => (
   <header>
     <div>
       <div>
-        <h1>Expensify</h1>
+        <NavLink exact to="/"><h1> Expensify</h1></NavLink>
       </div>
       <div>
         <NavLink exact to="/dashboard" activeClassName="active">Dashboard</NavLink>
