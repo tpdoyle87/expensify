@@ -4,9 +4,10 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 
 // Import we created
-import AppRouter from "./routers/AppRouter";
+import AppRouter, { history } from "./routers/AppRouter";
 import configureStore from "./store/configureStore";
 import { startSetExpenses } from './actions/expenses'
+import { login, logout } from './actions/auth'
 
 // Css imports
 import 'normalize.css/normalize.css';
@@ -17,7 +18,13 @@ import 'react-dates/lib/css/_datepicker.css';
 import { firebase } from './firebase/firebase'
 
 const store = configureStore();
-
+let hasRendered = false;
+const renderApp = () => {
+  if (!hasRendered) {
+    ReactDOM.render(jsx, document.getElementById('root'));
+    hasRendered = true
+  }
+}
 // allows all components to have access to the redux store
 const jsx = (
   <Provider store={store}>
@@ -27,14 +34,20 @@ const jsx = (
 
 ReactDOM.render(<p>Loading...</p>, document.getElementById('root'));
 
-store.dispatch(startSetExpenses()).then(() => {
-  ReactDOM.render(jsx, document.getElementById('root'));
-})
 
-firebase.auth().onAuthStateChanged(function (user) {
+
+firebase.auth().onAuthStateChanged((user) => {
   if (user) {
-    console.log("logged in")
+    store.dispatch(login(user.uid))
+    store.dispatch(startSetExpenses()).then(() => {
+      renderApp();
+      if (history.location.pathname === '/') {
+        history.push('/dashboard')
+      }
+    })
   } else {
-    console.log('signed out')
+    store.dispatch(logout())
+    renderApp();
+    history.push('/')
   }
 });
