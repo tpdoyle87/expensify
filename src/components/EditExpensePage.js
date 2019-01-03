@@ -8,12 +8,12 @@ import { startRemoveExpense } from '../actions/expenses'
 class EditExpensePage extends React.Component {
   onEdit = (expense) => {
     this.props.dispatch(startEditExpense(this.props.expense.id, expense))
-    this.props.history.push("/")
+    this.props.history.push("/dashboard")
   }
 
-  onRemove = (expense) => {
+  onRemove = () => {
     this.props.dispatch(startRemoveExpense({ id: this.props.expense.id }))
-    this.props.history.push('/')
+    this.props.history.push('/dashboard')
   }
   render() {
     return (

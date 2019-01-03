@@ -14,9 +14,7 @@ import './styles/styles.scss';
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
 // database
-import './firebase/firebase'
-
-
+import { firebase } from './firebase/firebase'
 
 const store = configureStore();
 
@@ -33,3 +31,10 @@ store.dispatch(startSetExpenses()).then(() => {
   ReactDOM.render(jsx, document.getElementById('root'));
 })
 
+firebase.auth().onAuthStateChanged(function (user) {
+  if (user) {
+    console.log("logged in")
+  } else {
+    console.log('signed out')
+  }
+});
