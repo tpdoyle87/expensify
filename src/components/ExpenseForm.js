@@ -76,7 +76,7 @@ export default class ExpenseForm extends React.Component {
           className="text-input"
           type="text"
           placeholder="amount"
-          value={this.state.amount}
+          value={this.state.amount === 0 ? "" : this.state.amount}
           onChange={this.onAmountChange}
         />
         <SingleDatePicker
