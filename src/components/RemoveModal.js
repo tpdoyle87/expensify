@@ -11,7 +11,7 @@ const RemoveModal = (props) => (
     className="modal"
   >
     <div className="modal__body">
-      <h2 className="modal__title">Remove {props.expense.description}</h2>
+      <h2 className="modal__title">{props.expense.description}</h2>
       <p>totalling: {numeral(props.expense.amount / 100).format('$0,0.00')}</p>
       <button className="button button--third" onClick={props.onRemove}>Remove</button>
     </div>
