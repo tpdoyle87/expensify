@@ -1,0 +1,23 @@
+.button {
+  background-color: $blue;
+  border: 1px solid lighten($blue, 10%);
+  border-radius: 3px;
+  color: white;
+  display: inline-block;
+  font-weight: 300;
+  line-height: 1;
+  font-size: $font-size-lg;
+  padding: $s-size $m-size;
+  text-decoration: none;
+}
+
+.button--link {
+  background: none;
+  border: none;
+}
+
+.button--secondary {
+  @extend .button;
+  background-color: #888;
+  border: 1px solid lighten(#888, 10%)
+}

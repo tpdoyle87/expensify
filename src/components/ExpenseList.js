@@ -8,16 +8,26 @@ class ExpenseList extends React.Component {
 
   render() {
     return (
-      <div>
-        {
-          this.props.expenses.length > 0 ? (
-            this.props.expenses.map((expense) => {
-              return <ExpenseListItem key={expense.id} {...expense} />;
-            })
-          ) : (
-              <p>No expenses</p>
-            )
-        }
+      <div className="content-container">
+        <div className="list-header">
+          <div className="show-for-mobile">Expenses</div>
+          <div className="show-for-desktop">Expense</div>
+          <div className="show-for-desktop">Amount</div>
+        </div>
+        <div className="list-body">
+          {
+            this.props.expenses.length > 0 ? (
+              this.props.expenses.map((expense) => {
+                return <ExpenseListItem key={expense.id} {...expense} />;
+              })
+            ) : (
+                <div className="list-item--message">
+                  <span>No expenses</span>
+                </div>
+
+              )
+          }
+        </div>
       </div>
     )
   }

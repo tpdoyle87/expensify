@@ -8,12 +8,13 @@ import AppRouter, { history } from "./routers/AppRouter";
 import configureStore from "./store/configureStore";
 import { startSetExpenses } from './actions/expenses'
 import { login, logout } from './actions/auth'
+import LoadingPage from './components/LoadingPage'
 
 // Css imports
 import 'normalize.css/normalize.css';
-import './styles/styles.scss';
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
+import './styles/styles.scss';
 // database
 import { firebase } from './firebase/firebase'
 
@@ -32,7 +33,7 @@ const jsx = (
   </Provider>
 )
 
-ReactDOM.render(<p>Loading...</p>, document.getElementById('root'));
+ReactDOM.render(<LoadingPage />, document.getElementById('root'));
 
 
 
