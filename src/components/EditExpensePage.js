@@ -2,13 +2,27 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import ExpenseForm from './ExpenseForm'
+import RemoveModal from './RemoveModal'
 import { startEditExpense } from '../actions/expenses'
 import { startRemoveExpense } from '../actions/expenses'
 
 class EditExpensePage extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      modalOpen: false
+    }
+  }
+
   onEdit = (expense) => {
     this.props.dispatch(startEditExpense(this.props.expense.id, expense))
     this.props.history.push("/dashboard")
+  }
+
+  changeModal = () => {
+    this.setState((prevState) => ({
+      modalOpen: !prevState.modalOpen
+    }))
   }
 
   onRemove = () => {
@@ -28,12 +42,22 @@ class EditExpensePage extends React.Component {
             expense={this.props.expense}
             onSubmit={this.onEdit}
           />
+          <RemoveModal
+            expense={this.props.expense}
+            isOpen={this.state.modalOpen}
+            onRequestClose={this.changeModal}
+            onRemove={this.onRemove}
+            ariaHideApp={false}
+          />
 
           <button
           className="button button--secondary"
-          onClick={this.onRemove}>
+          onClick={() => {
+            this.changeModal()
+          }}>
             Remove Expense
           </button>
+
         </div>
       </div>
     )
@@ -42,7 +66,7 @@ class EditExpensePage extends React.Component {
 
 const mapStateToProps = (state, props) => {
   return {
-    expense: state.expenses.find((expense) => expense.id === props.match.params.id)
+    expense: state.expenses.find((expense) => expense.id === props.match.params.id),
   }
 }
 

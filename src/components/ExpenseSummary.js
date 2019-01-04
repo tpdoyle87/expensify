@@ -12,9 +12,16 @@ const ExpenseSummary = (props) => {
   <div className="page-header">
     <div className="content-container">
       {props.expenses.length === 1 ? (
+        <div>
           <h1 className="page-header__title">Viewing <span>1</span> expense totalling <span>{numeral(props.expensesTotal / 100).format('$0,0.00')}</span></h1>
+          <h3 className="page-header__title"><span>{props.allExpenses.length}</span> Expense(s) totalling <span>{numeral(props.allExpensesTotal / 100).format('$0,0.00')}</span></h3>
+        </div>
         ) : (
+          <div>
             <h1 className="page-header__title"> Viewing <span>{props.expenses.length}</span> expenses totalling <span>{numeral(props.expensesTotal / 100).format('$0,0.00')}</span></h1>
+            <h3 className="page-header__title"><span>{props.allExpenses.length}</span> Expense(s) totalling <span>{numeral(props.allExpensesTotal / 100).format('$0,0.00')}</span></h3>
+          </div>
+
         )
       }
       <div className="page-header__actions">
@@ -28,7 +35,9 @@ const ExpenseSummary = (props) => {
 const mapStateToProps = (state) => {
   return {
     expenses: selectExpense(state.expenses, state.filters),
-    expensesTotal: selectExpensesTotal(selectExpense(state.expenses, state.filters))
+    expensesTotal: selectExpensesTotal(selectExpense(state.expenses, state.filters)),
+    allExpenses: state.expenses,
+    allExpensesTotal: selectExpensesTotal(state.expenses)
   }
 }
 

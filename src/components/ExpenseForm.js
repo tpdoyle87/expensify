@@ -3,7 +3,6 @@ import moment from 'moment';
 import { SingleDatePicker } from 'react-dates';
 import uuid from 'uuid'
 
-const date = moment();
 export default class ExpenseForm extends React.Component {
   constructor(props) {
     super(props)
