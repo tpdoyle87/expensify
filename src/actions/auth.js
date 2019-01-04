@@ -23,14 +23,14 @@ export const startLoginGoogle = () => {
             firebase.auth.signInWithEmailAndPassword(email, password).then((user) => {
               return user.link(pendingCred)
             }).then(() => {
-              firebase.auth.goToApp()
+              firebase.auth().goToApp()
             });
             return;
           }
           const provider = firebase.auth.getProviderForProviderId(methods[0]);
           firebase.auth.signInWithPopup(provider).then((result) => {
             result.user.linkAndRetrieveDataWithCredential(pendingCred).then((usercred) => {
-              firebase.auth.goToApp();
+              firebase.auth().goToApp();
             });
           })
         })
